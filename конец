@@ -1,0 +1,23 @@
+package main
+
+import (
+	"fmt"
+	"log"
+
+	"github.com/skip2/go-qrcode"
+)
+
+func main() {
+	url := "https://google.com"
+	fileName := "qrcode.png"
+	
+	fmt.Println("Генерация QR-кода...")
+
+	// Увеличила размер до 512 для лучшего качества
+	err := qrcode.WriteFile(url, qrcode.Medium, 512, fileName)
+	if err != nil {
+		log.Fatal("Ошибка:", err)
+	}
+
+	fmt.Printf("Готово! Файл %s успешно создан для %s\n", fileName, url)
+}
